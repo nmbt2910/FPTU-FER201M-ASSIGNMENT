@@ -220,9 +220,9 @@ const PlayerList = () => {
             >
               {player.name}
             </Typography>
-            <Typography variant="body1">Club: {player.club}</Typography>
-            <Typography variant="body1">Nation: {player.nation}</Typography>
-            <Typography variant="body1">Cost: {player.cost}</Typography>
+            <Typography variant="body1">Genre: {player.club}</Typography>
+            <Typography variant="body1">Studio: {player.nation}</Typography>
+            <Typography variant="body1">Episodes: {player.cost}</Typography>
             <Box sx={{ marginTop: '10px' }}>
               <Button
                 onClick={() => handleDeletePlayer(player.id)}
