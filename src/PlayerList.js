@@ -198,7 +198,7 @@ const PlayerList = () => {
         color="primary"
         sx={{ marginBottom: '16px' }}
       >
-        Add New Player
+        Add New Anime
       </Button>
       {players.map((player) => (
         <Card
@@ -229,7 +229,7 @@ const PlayerList = () => {
                 variant="contained"
                 color="error"
               >
-                Delete Player
+                Delete Anime
               </Button>
               <Button
                 onClick={() => handleEditPlayer(player)}
@@ -237,7 +237,7 @@ const PlayerList = () => {
                 color="primary"
                 sx={{ marginLeft: '10px' }}
               >
-                Edit Player
+                Edit Anime
               </Button>
             </Box>
           </CardContent>
@@ -249,7 +249,7 @@ const PlayerList = () => {
         onClose={() => setIsAddingPlayer(false)}
         maxWidth="sm"
       >
-        <DialogTitle>Add New Player</DialogTitle>
+        <DialogTitle>Add New Anime</DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
@@ -264,7 +264,7 @@ const PlayerList = () => {
           <TextField
             margin="dense"
             name="club"
-            label="Club"
+            label="Genre"
             type="text"
             fullWidth
             value={newPlayerData.club}
@@ -273,7 +273,7 @@ const PlayerList = () => {
           <TextField
             margin="dense"
             name="nation"
-            label="Nation"
+            label="Studio"
             type="text"
             fullWidth
             value={newPlayerData.nation}
@@ -282,7 +282,7 @@ const PlayerList = () => {
           <TextField
             margin="dense"
             name="cost"
-            label="Cost"
+            label="Episodes"
             type="text"
             fullWidth
             value={newPlayerData.cost}
@@ -329,7 +329,7 @@ const PlayerList = () => {
         onClose={() => setIsEditing(false)}
         maxWidth="sm"
       >
-        <DialogTitle>Edit Player</DialogTitle>
+        <DialogTitle>Edit Anime</DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
@@ -344,7 +344,7 @@ const PlayerList = () => {
           <TextField
             margin="dense"
             name="club"
-            label="Club"
+            label="Genre"
             type="text"
             fullWidth
             value={editedPlayerData.club}
@@ -353,7 +353,7 @@ const PlayerList = () => {
           <TextField
             margin="dense"
             name="nation"
-            label="Nation"
+            label="Studio"
             type="text"
             fullWidth
             value={editedPlayerData.nation}
@@ -362,7 +362,7 @@ const PlayerList = () => {
           <TextField
             margin="dense"
             name="cost"
-            label="Cost"
+            label="Episodes"
             type="text"
             fullWidth
             value={editedPlayerData.cost}

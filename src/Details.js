@@ -25,18 +25,36 @@ function Details({ players }) {
         {players.slice((currentPage - 1) * playersPerPage, currentPage * playersPerPage).map((data) => (
           <Card key={data.id} sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             <CardMedia component="img" height="180" image={data.img} alt={data.name} />
-            <CardContent sx={{ flex: '1 0 auto' }}>
-              <Typography variant="h6" component="h2" sx={{ fontWeight: 'bold', fontSize: '18px' }}>
+            <CardContent
+              sx={{
+                flex: '1 0 auto',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textAlign: 'center',
+              }}
+            >
+              <Typography
+                variant="h6"
+                component="h2"
+                sx={{
+                  fontWeight: 'bold',
+                  fontSize: '18px',
+                  marginBottom: '8px',
+                  textAlign: 'center',
+                }}
+              >
                 {data.name}
               </Typography>
-              <Typography variant="subtitle1" sx={{ marginBottom: '8px' }}>
-                Club: {data.club}
+              <Typography variant="body2" sx={{ marginBottom: '8px' }}>
+                Genre: {data.club}
               </Typography>
               <Typography variant="body2" sx={{ marginBottom: '8px' }}>
-                Nation: {data.nation}
+                Studio: {data.nation}
               </Typography>
               <Typography variant="body2" sx={{ marginBottom: '8px' }}>
-                Cost: {data.cost}
+                Episodes: {data.cost}
               </Typography>
             </CardContent>
             <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '10px', flexShrink: 0, marginBottom: '10px' }}>
