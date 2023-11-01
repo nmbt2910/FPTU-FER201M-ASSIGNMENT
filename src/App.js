@@ -9,6 +9,7 @@ import Details from './Details';
 import Login from './Login';
 import UserProfile from './UserProfile';
 import BottomBar from './BottomBar';
+import WatchPage from './WatchPage';
 
 function App() {
   const [APIData, setAPIData] = useState([]);
@@ -42,6 +43,7 @@ function App() {
         <Route path="/playerlist" element={<PlayerList players={APIData} />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/watch/:playerId" element={<WatchPage />} />
           </Routes>
         </Container>
         <BottomBar />

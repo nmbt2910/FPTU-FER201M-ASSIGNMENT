@@ -1,34 +1,11 @@
-import React, { useState } from 'react';
-import AddPlayerForm from './AddPlayerForm';
-import {
-  Box,
-  Typography,
-  Card,
-  CardContent,
-  Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
-  CardMedia,
-  Pagination,
-  useMediaQuery,
-} from '@mui/material';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Box, Typography, Card, CardContent, Button, CardMedia, Pagination, useMediaQuery } from '@mui/material';
 
 function Details({ players }) {
-  const [selectedPlayer, setSelectedPlayer] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = React.useState(1);
   const isSmallScreen = useMediaQuery('(max-width: 600px)');
   const playersPerPage = isSmallScreen ? 5 : 10; // Adjust the number of players per page for smaller screens
-
-  const handlePlayerClick = (player) => {
-    setSelectedPlayer(player);
-  };
-
-  const handleClose = () => {
-    setSelectedPlayer(null);
-  };
 
   const handlePageChange = (event, page) => {
     setCurrentPage(page);
@@ -46,9 +23,9 @@ function Details({ players }) {
         }}
       >
         {players.slice((currentPage - 1) * playersPerPage, currentPage * playersPerPage).map((data) => (
-          <Card key={data.id}>
+          <Card key={data.id} sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             <CardMedia component="img" height="180" image={data.img} alt={data.name} />
-            <CardContent>
+            <CardContent sx={{ flex: '1 0 auto' }}>
               <Typography variant="h6" component="h2" sx={{ fontWeight: 'bold', fontSize: '18px' }}>
                 {data.name}
               </Typography>
@@ -61,12 +38,14 @@ function Details({ players }) {
               <Typography variant="body2" sx={{ marginBottom: '8px' }}>
                 Cost: {data.cost}
               </Typography>
-              <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
-                <Button onClick={() => handlePlayerClick(data)} variant="contained" color="primary">
+            </CardContent>
+            <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '10px', flexShrink: 0, marginBottom: '10px' }}>
+              <Link to={`/watch/${data.id}`} style={{ textDecoration: 'none' }}>
+                <Button variant="contained" color="primary">
                   Show Info
                 </Button>
-              </Box>
-            </CardContent>
+              </Link>
+            </Box>
           </Card>
         ))}
       </Box>
@@ -81,33 +60,6 @@ function Details({ players }) {
           />
         </Box>
       )}
-      <AddPlayerForm />
-
-      <Dialog open={selectedPlayer !== null} onClose={handleClose} maxWidth="md" fullWidth>
-        <DialogTitle>{selectedPlayer?.name}</DialogTitle>
-        <DialogContent>
-          <Box sx={{ position: 'relative', paddingTop: '56.25%' }}>
-            <iframe
-              width="100%"
-              height="100%"
-              src={selectedPlayer?.clip}
-              title="YouTube Video"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-            ></iframe>
-          </Box>
-          <DialogContentText sx={{ color: 'black', textAlign: 'center', marginTop: '16px' }}>
-            <Typography variant="body1">{selectedPlayer?.info}</Typography>
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions sx={{ justifyContent: 'center' }}>
-          <Button onClick={handleClose} color="secondary" variant="contained">
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
     </Box>
   );
 }
