@@ -15,20 +15,42 @@ function Contact() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
+  const [nameError, setNameError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [messageError, setMessageError] = useState('');
 
   const handleNameChange = (event) => {
-    setName(event.target.value);
+    const value = event.target.value;
+    setName(value);
+    setNameError(value.length > 0 && !/^[a-zA-Z]+$/.test(value) ? 'Name must contain only characters' : '');
   };
 
   const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+    const value = event.target.value;
+    setEmail(value);
+    setEmailError(value.length > 0 && !/\S+@\S+\.\S+/.test(value) ? 'Invalid email format' : '');
   };
 
   const handleMessageChange = (event) => {
-    setMessage(event.target.value);
+    const value = event.target.value;
+    setMessage(value);
+    setMessageError(value.length > 0 && value.split(' ').length < 10 ? 'Message must be at least 10 words' : '');
   };
 
   const handleSubmit = async () => {
+    if (name.length === 0 || email.length === 0 || message.length === 0) {
+      // Display error messages for empty fields
+      setNameError(name.length === 0 ? 'Name is required' : '');
+      setEmailError(email.length === 0 ? 'Email is required' : '');
+      setMessageError(message.length === 0 ? 'Message is required' : '');
+      return;
+    }
+
+    if (nameError || emailError || messageError) {
+      // Prevent form submission if there are validation errors
+      return;
+    }
+
     try {
       const response = await fetch('https://6540cf3145bedb25bfc2a8ea.mockapi.io/contact', {
         method: 'POST',
@@ -77,6 +99,8 @@ function Contact() {
                 fullWidth
                 value={name}
                 onChange={handleNameChange}
+                error={!!nameError}
+                helperText={nameError}
               />
             </Grid>
             <Grid item xs={12}>
@@ -85,6 +109,8 @@ function Contact() {
                 fullWidth
                 value={email}
                 onChange={handleEmailChange}
+                error={!!emailError}
+                helperText={emailError}
               />
             </Grid>
             <Grid item xs={12}>
@@ -95,6 +121,8 @@ function Contact() {
                 fullWidth
                 value={message}
                 onChange={handleMessageChange}
+                error={!!messageError}
+                helperText={messageError}
               />
             </Grid>
             <Grid item xs={12}>
