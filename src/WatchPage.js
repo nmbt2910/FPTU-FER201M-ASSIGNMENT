@@ -133,13 +133,13 @@ function WatchPage({ players }) {
             </Box>
             <Paper elevation={3} sx={{ width: '100%', padding: '20px' }}>
                 <Typography variant="body2" component="div">
-                    <Box fontWeight="fontWeightBold">Club:</Box> {player.club}
+                    <Box fontWeight="fontWeightBold">Genre:</Box> {player.club}
                 </Typography>
                 <Typography variant="body2" component="div">
-                    <Box fontWeight="fontWeightBold">Nation:</Box> {player.nation}
+                    <Box fontWeight="fontWeightBold">Studio:</Box> {player.nation}
                 </Typography>
                 <Typography variant="body2" component="div">
-                    <Box fontWeight="fontWeightBold">Cost:</Box> {player.cost}
+                    <Box fontWeight="fontWeightBold">Episodes:</Box> {player.cost}
                 </Typography>
                 <Typography variant="body1" component="div" sx={{ marginTop: '10px' }}>
                     {player.info}
