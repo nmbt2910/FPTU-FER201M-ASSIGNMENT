@@ -31,7 +31,7 @@ function CustomAppBar() {
   const handleSignOut = async () => {
     try {
       await logOut();
-      handleCloseUserMenu(); // Close the menu after successful logout
+      handleCloseUserMenu();
     } catch (error) {
       console.log(error);
     }
@@ -99,7 +99,7 @@ function CustomAppBar() {
       <Menu
         sx={{ mt: '45px' }}
         id="menu-appbar"
-        anchorEl={user?.displayName ? anchorElUser : null} // Use conditional expression for anchorEl
+        anchorEl={user?.displayName ? anchorElUser : null}
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'right',

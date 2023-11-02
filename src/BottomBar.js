@@ -9,7 +9,7 @@ function BottomBar() {
         color: '#ffffff',
         textAlign: 'center',
         padding: '12px',
-        marginTop: '20px', // Increase the margin here
+        marginTop: '20px',
       }}
     >
       AnimeHub by JavaScript @ 2023

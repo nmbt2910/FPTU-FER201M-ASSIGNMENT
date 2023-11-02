@@ -5,7 +5,7 @@ import { Box, Typography, Card, CardContent, Button, CardMedia, Pagination, useM
 function Details({ players }) {
   const [currentPage, setCurrentPage] = React.useState(1);
   const isSmallScreen = useMediaQuery('(max-width: 600px)');
-  const playersPerPage = isSmallScreen ? 5 : 10; // Adjust the number of players per page for smaller screens
+  const playersPerPage = isSmallScreen ? 5 : 10;
 
   const handlePageChange = (event, page) => {
     setCurrentPage(page);

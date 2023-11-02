@@ -39,7 +39,6 @@ function Contact() {
 
   const handleSubmit = async () => {
     if (name.length === 0 || email.length === 0 || message.length === 0) {
-      // Display error messages for empty fields
       setNameError(name.length === 0 ? 'Name is required' : '');
       setEmailError(email.length === 0 ? 'Email is required' : '');
       setMessageError(message.length === 0 ? 'Message is required' : '');
@@ -47,7 +46,6 @@ function Contact() {
     }
 
     if (nameError || emailError || messageError) {
-      // Prevent form submission if there are validation errors
       return;
     }
 
